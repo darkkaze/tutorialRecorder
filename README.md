@@ -33,6 +33,10 @@ See how to export your recordings with different layouts for TikTok, Instagram, 
 - 🎨 **Interactive area selector** - Visual overlay to select recording area
 - 💾 **User preferences** - Remembers your export path and default resolution
 
+## Troubleshooting
+
+Having issues? Check the [Troubleshooting Guide](TROUBLESHOOTING.md) for common problems and solutions.
+
 ## Download
 
 ### Pre-built Binaries (Recommended)
