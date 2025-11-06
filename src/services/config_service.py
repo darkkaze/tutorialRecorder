@@ -8,10 +8,14 @@ Available methods:
 - load_config(): Load configuration from disk.
 - save_config(config): Save configuration to disk.
 - get_default_config(): Get default configuration values.
+- update_config(updates): Update configuration with key-value pairs.
+- update_export_path(path): Update export path.
+- update_default_resolution(resolution): Update default resolution.
 
 Configuration keys:
 - export_path: Last selected export destination folder.
 - default_resolution: Last used resolution (e.g., "1920x1080").
+- permissions_warning_shown: Whether permissions warning was shown (bool).
 """
 import json
 from pathlib import Path
@@ -115,4 +119,16 @@ def update_default_resolution(resolution: str):
     """
     config = load_config()
     config["default_resolution"] = resolution
+    save_config(config)
+
+
+def update_config(updates: Dict):
+    """
+    Update configuration with provided key-value pairs.
+
+    Args:
+        updates: Dictionary with configuration updates.
+    """
+    config = load_config()
+    config.update(updates)
     save_config(config)

@@ -6,6 +6,7 @@ recording projects, including project name and input device selection.
 """
 import platform
 import sys
+import subprocess
 from pathlib import Path
 from PyQt6.QtWidgets import (
     QMainWindow,
@@ -663,40 +664,24 @@ class ProjectConfigWindow(QMainWindow):
         if not is_macos:
             return
 
-        has_issues = False
-        issues = []
+        # Only show permissions warning on first run
+        config = config_service.load_config()
+        if config.get("permissions_warning_shown", False):
+            return
 
-        try:
-            audio_devices = audio_service.list_audio_devices()
-            if not audio_devices or (len(audio_devices) == 1 and "Error" in audio_devices[0]):
-                has_issues = True
-                issues.append("microphone")
-        except Exception:
-            has_issues = True
-            issues.append("microphone")
+        # Mark as shown
+        config_service.update_config({"permissions_warning_shown": True})
 
-        try:
-            video_devices = video_service.list_video_devices()
-            if not video_devices or (len(video_devices) == 1 and "Error" in video_devices[0]):
-                has_issues = True
-                issues.append("camera")
-        except Exception:
-            has_issues = True
-            issues.append("camera")
-
-        if has_issues:
-            devices_str = " and ".join(issues)
-            QMessageBox.warning(
-                self,
-                "Permissions Required",
-                f"TutorialRecorder needs {devices_str} permissions to function properly.\n\n"
-                f"Please go to:\n"
-                f"System Preferences → Security & Privacy → Privacy\n\n"
-                f"Then grant access to:\n"
-                f"- Camera (if recording video)\n"
-                f"- Microphone (if recording audio)\n\n"
-                f"You may need to restart the application after granting permissions."
-            )
+        # Show informative message on first run only
+        QMessageBox.information(
+            self,
+            "Permissions Required",
+            "TutorialRecorder needs Camera, Microphone, and Screen Recording permissions.\n\n"
+            "If prompted, please grant these permissions in:\n"
+            "System Preferences → Security & Privacy → Privacy\n\n"
+            "Note: You may need to restart the application after granting permissions.\n\n"
+            "This message will only appear once."
+        )
 
     def _create_tray_icon(self):
         """Create system tray icon for recording control."""
