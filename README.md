@@ -63,7 +63,7 @@ See how to export your recordings with different layouts for TikTok, Instagram, 
 
 #### Install FFmpeg
 
-**Note:** If you downloaded the pre-built binary from `dist/macos/`, skip this step - FFmpeg is already bundled!
+**Note:** If you downloaded the pre-built binary (DMG or .app from Releases), skip this step - FFmpeg is already bundled!
 
 **macOS:**
 ```bash
