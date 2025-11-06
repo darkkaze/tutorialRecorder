@@ -33,14 +33,37 @@ See how to export your recordings with different layouts for TikTok, Instagram, 
 - 🎨 **Interactive area selector** - Visual overlay to select recording area
 - 💾 **User preferences** - Remembers your export path and default resolution
 
-## Installation
+## Download
+
+### Pre-built Binaries (Recommended)
+
+**macOS:**
+- Download from [Releases](https://github.com/darkkaze/tutorialRecorder/releases/latest)
+- Available files:
+  - **TutorialRecorder-1.0.0.dmg** - Installer (recommended)
+  - Or download .app directly from release assets
+
+**Requirements:**
+- macOS 10.13 (High Sierra) or later
+- No additional installation needed (FFmpeg is bundled)
+
+**First run:**
+- System will ask for permissions (Camera, Microphone, Screen Recording)
+- Go to System Preferences → Security & Privacy → Allow
+
+**Windows & Linux:**
+- Coming soon! For now, use the source installation method below.
+
+## Installation from Source
 
 ### Prerequisites
 
 1. **Python 3.10 or higher**
-2. **FFmpeg** - Must be installed and available in PATH
+2. **FFmpeg** - Must be installed and available in PATH (not needed for pre-built binaries)
 
 #### Install FFmpeg
+
+**Note:** If you downloaded the pre-built binary from `dist/macos/`, skip this step - FFmpeg is already bundled!
 
 **macOS:**
 ```bash
@@ -138,13 +161,15 @@ tutorialRecorder/
 ## Roadmap
 
 - [x] macOS record / finish at 2025/11/04
-- [x] Linux record / finish at 2025/11/05 (no tested)
-  - [x] X11 OK (no tested)
-  - [ ] Wayland pendiente
-- [x] Windows record / finish at 2025/11/05 (no tested)
+- [x] macOS build (.app + .dmg) / finish at 2025/11/05
+- [x] Export with multiple layouts / finish at 2025/11/05
+- [x] Linux record / finish at 2025/11/05 (not tested)
+  - [x] X11 OK (not tested)
+  - [ ] Wayland pending
+- [x] Windows record / finish at 2025/11/05 (not tested)
+- [ ] Windows build (.exe)
+- [ ] Linux build (.AppImage / .deb)
 - [ ] Simple cut editor (cut all channels at same time)
-- [ ] Output template (merge all channels)
-- [ ] Pack in an executable
 
 ## Configuration
 

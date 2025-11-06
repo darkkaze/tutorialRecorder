@@ -1,0 +1,16 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background matching app theme -->
+  <rect width="512" height="512" fill="#2d2d2d" rx="80"/>
+
+  <!-- Mint circle in center -->
+  <circle cx="256" cy="280" r="100" fill="#26A69A"/>
+
+  <!-- REC text above circle -->
+  <text x="256" y="140"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="80"
+        font-weight="bold"
+        fill="#26A69A"
+        text-anchor="middle"
+        dominant-baseline="middle">REC</text>
+</svg>

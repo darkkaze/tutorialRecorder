@@ -10,6 +10,7 @@ import tempfile
 from pathlib import Path
 from typing import Dict
 from .base import BasePlatformService
+from utils.ffmpeg_utils import get_ffmpeg_path
 
 
 class MacOSPlatformService(BasePlatformService):
@@ -27,7 +28,7 @@ class MacOSPlatformService(BasePlatformService):
         """
         try:
             result = subprocess.run(
-                ["ffmpeg", "-f", "avfoundation", "-list_devices", "true", "-i", ""],
+                [get_ffmpeg_path(), "-f", "avfoundation", "-list_devices", "true", "-i", ""],
                 capture_output=True,
                 text=True,
                 timeout=5
@@ -51,7 +52,7 @@ class MacOSPlatformService(BasePlatformService):
         """
         try:
             result = subprocess.run(
-                ["ffmpeg", "-f", "avfoundation", "-list_devices", "true", "-i", ""],
+                [get_ffmpeg_path(), "-f", "avfoundation", "-list_devices", "true", "-i", ""],
                 capture_output=True,
                 text=True,
                 timeout=5
@@ -75,7 +76,7 @@ class MacOSPlatformService(BasePlatformService):
         """
         try:
             result = subprocess.run(
-                ["ffmpeg", "-f", "avfoundation", "-list_devices", "true", "-i", ""],
+                [get_ffmpeg_path(), "-f", "avfoundation", "-list_devices", "true", "-i", ""],
                 capture_output=True,
                 text=True,
                 timeout=5
@@ -114,7 +115,7 @@ class MacOSPlatformService(BasePlatformService):
         output_file = temp_folder / f"{project_name}_mic{index}.wav"
 
         return [
-            "ffmpeg",
+            get_ffmpeg_path(),
             "-f", "avfoundation",
             "-i", f":{device_index}",
             str(output_file)
@@ -141,7 +142,7 @@ class MacOSPlatformService(BasePlatformService):
         output_file = temp_folder / f"{project_name}_webcam.mp4"
 
         return [
-            "ffmpeg",
+            get_ffmpeg_path(),
             "-f", "avfoundation",
             "-framerate", "30",
             "-i", f"{device_index}:none",
@@ -184,7 +185,7 @@ class MacOSPlatformService(BasePlatformService):
         )
 
         return [
-            "ffmpeg",
+            get_ffmpeg_path(),
             "-f", "avfoundation",
             "-i", f"{device_index}:none",
             "-filter:v", crop_filter,

@@ -16,6 +16,7 @@ import platform
 from pathlib import Path
 from typing import Callable, Optional
 from datetime import datetime
+from utils.ffmpeg_utils import get_ffmpeg_path
 
 
 def export_video(
@@ -200,7 +201,7 @@ def _build_ffmpeg_command(
         ValueError: If layout name is unknown.
     """
     # Base command
-    cmd = ["ffmpeg", "-y"]  # -y to overwrite without asking
+    cmd = [get_ffmpeg_path(), "-y"]  # -y to overwrite without asking
 
     # Add input files
     cmd.extend(["-i", str(screen_file)])
