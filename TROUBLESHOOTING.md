@@ -43,7 +43,7 @@ xattr -cr /path/to/TutorialRecorder.app
 
 Or, if you downloaded the DMG:
 ```bash
-xattr -cr ~/Downloads/TutorialRecorder-1.0.0.dmg
+xattr -cr ~/Downloads/TutorialRecorder-1.0.1.dmg
 ```
 
 Then open the app normally.

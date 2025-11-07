@@ -44,7 +44,7 @@ Having issues? Check the [Troubleshooting Guide](TROUBLESHOOTING.md) for common 
 **macOS:**
 - Download from [Releases](https://github.com/darkkaze/tutorialRecorder/releases/latest)
 - Available files:
-  - **TutorialRecorder-1.0.0.dmg** - Installer (recommended)
+  - **TutorialRecorder-1.0.1.dmg** - Installer (recommended)
   - Or download .app directly from release assets
 
 **Requirements:**

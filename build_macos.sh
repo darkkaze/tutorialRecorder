@@ -33,6 +33,13 @@ mkdir -p dist/macos
 # Move .app to final location
 mv .build/dist/TutorialRecorder.app dist/macos/
 
+# Re-sign with entitlements for better permission handling
+echo "🔐 Signing app with entitlements..."
+codesign --force --deep --sign - \
+  --entitlements entitlements.plist \
+  --options runtime \
+  dist/macos/TutorialRecorder.app 2>&1 | grep -v "replacing existing signature" || true
+
 echo "✅ .app bundle created successfully!"
 echo ""
 
@@ -58,7 +65,7 @@ create-dmg \
   --icon "TutorialRecorder.app" 200 190 \
   --hide-extension "TutorialRecorder.app" \
   --app-drop-link 600 185 \
-  "dist/macos/TutorialRecorder-1.0.0.dmg" \
+  "dist/macos/TutorialRecorder-1.0.1.dmg" \
   "dist/macos/TutorialRecorder.app" \
   2>/dev/null || {
     echo "⚠️  DMG creation had warnings (this is normal)"
@@ -69,8 +76,8 @@ echo "✅ Build complete!"
 echo ""
 echo "📦 Your files are in dist/macos/:"
 echo "   - App bundle: TutorialRecorder.app"
-if [ -f "dist/macos/TutorialRecorder-1.0.0.dmg" ]; then
-    echo "   - DMG installer: TutorialRecorder-1.0.0.dmg"
+if [ -f "dist/macos/TutorialRecorder-1.0.1.dmg" ]; then
+    echo "   - DMG installer: TutorialRecorder-1.0.1.dmg"
 fi
 echo ""
 echo "💡 Tip: You can delete .build/ folder (temporary files)"

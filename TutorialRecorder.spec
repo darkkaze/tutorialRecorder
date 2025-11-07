@@ -86,12 +86,12 @@ app = BUNDLE(
     name='TutorialRecorder.app',
     icon='icon.icns',
     bundle_identifier='dev.nomada.tutorialrecorder',
-    version='1.0.0',
+    version='1.0.1',
     info_plist={
         'CFBundleName': 'TutorialRecorder',
         'CFBundleDisplayName': 'TutorialRecorder',
-        'CFBundleShortVersionString': '1.0.0',
-        'CFBundleVersion': '1.0.0',
+        'CFBundleShortVersionString': '1.0.1',
+        'CFBundleVersion': '1.0.1',
         'NSHumanReadableCopyright': 'Copyright © 2025 Kaze. Licensed under Beerware License.',
         'NSHighResolutionCapable': 'True',
         'LSMinimumSystemVersion': '10.13.0',
@@ -99,4 +99,5 @@ app = BUNDLE(
         'NSMicrophoneUsageDescription': 'TutorialRecorder needs access to your microphone to record audio.',
         'NSScreenCaptureDescription': 'TutorialRecorder needs access to screen recording to capture your screen.',
     },
+    entitlements_file='entitlements.plist',
 )
